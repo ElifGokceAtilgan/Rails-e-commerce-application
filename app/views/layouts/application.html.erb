@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsECommerceApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.flash-container').hide(); 
+
+     
+        if ($('.flash-container').children().length > 0) {
+          $('.flash-container').show(); 
+          setTimeout(function() {
+            $('.flash-container').fadeOut('slow');
+          }, 2000);
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="flash-container">
+      <% flash.each do |key, value| %>
+        <div class="flash-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row no-gutters pt-3">
+          <div class="col-12 header-color justify-content">
+            <h2>MY CART</h2>
+            <h6>This is your cart, you are free to arrange it!</h6>
+            <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
+          </div>
+          <div>
+            <p>Number of Products: <%= @cart.total_quantity %></p>
+            <p>Total Price: <%= @total_price %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row box bg-b">
+      <div class="d-flex flex-wrap justify-content-center"> 
+        <% @products.each do |product| %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="product-item">
+              <%= button_to 'Remove', remove_from_cart_carts_path(product_id: product.id), method: :delete, class: 'bg-a' %>
+              <img src="<%= product.image_url %>" alt="<%= product.name %>">
+              <p><%= product.name %></p>
+              <p>Price: <%= product.price %></p>
+              <p>Stock: <%= product.stock %></p>
+              <p>Quantity: <%= @cart.quantity_of_product(product) %></p>
+              <div class="button-group">
+                <%= button_to '+', increase_quantity_carts_path(product_id: product.id), method: :patch, class: 'bg-a' %>
+                <%= button_to '-', decrease_quantity_carts_path(product_id: product.id), method: :patch, class: 'bg-a' %>
+              </div>
+            </div>
+          </div>
+        <% end %> 
+      </div>
+    </div>
+  </body>
+</html>
+
+
+    
+  
+
+    
+
+

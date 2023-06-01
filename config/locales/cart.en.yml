@@ -1,0 +1,10 @@
+en:
+  views:
+    cart:
+      sure_for_delete: "The product will be removed from the cart, are you sure you want to delete it?"
+      deleted: "Product removed from cart successfully."
+      added: "Product successfully added to your cart!"
+      no_stock: "This product is out of stock."
+      quantity_increased: "Product's quantity increased at your cart"
+      quantity_decreased: "Product's quantity decreased at your cart"
+      removed: "Product removed from cart successfully."
